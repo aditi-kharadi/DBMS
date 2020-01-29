@@ -1,0 +1,130 @@
+<?php
+
+
+$con=mysqli_connect('localhost','root','','student');
+// Check connection
+if (mysqli_connect_errno())
+{
+echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+
+$result = mysqli_query($con,"SELECT * FROM history" );
+
+echo "<table border='30'>
+<tr>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Room No.</th>
+    <th>Time OUT</th>
+    <th>Where</th>
+    <th>Time IN</th>
+</tr>";
+
+while($row = mysqli_fetch_array($result))
+{
+echo "<tr>";
+echo "<td>" . $row['datee'] . "</td>";
+echo "<td>" . $row['namee'] . "</td>";
+echo "<td>" . $row['room_no'] . "</td>";
+echo "<td>" . $row['time_in'] . "</td>";
+echo "<td>" . $row['place'] . "</td>";
+echo "<td>" . $row['time-out'] . "</td>";
+echo "</tr>";
+}
+echo "</table>";
+
+mysqli_close($con);
+?>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hostel Room Management System</title>
+  <link rel="stylesheet" href="login_css.css">
+</head>
+
+<body class="bg" >
+
+  <img src="C:\Users\HP\Desktop\csjmu.jpg" class="image"/>
+  <div>
+    
+    <h1>HOSTEL ROOM MANAGEMENT SYSTEM</h1>
+    
+    <button id="lg" style="float:right">login</button>
+
+    <br>
+  </div>
+  <br>
+<div class="container1"> 
+  <h5>Going Out:</h5>
+  <form class="form-inline" action="/action_page.php" id="form"> 
+  
+    <label for="name">Name:</label>
+    <input type="name" class="form-control1" id="name" name="name"> 
+    
+    <label for="room">Room. no.:</label> 
+    <input type="number" class="form-control1" id="room" name="room"> 
+    
+    <label for="whr">Where:</label> 
+    <input type="text" class="form-control1" id="whr" name="whr"> 
+    
+  </form> 
+  <center>
+    <button id="submit" onclick="submit()" align="center">SUBMIT</button>      
+  </center>
+</div> 
+
+
+  <table class="tb1" id="table">
+  <tr>
+    <th>Name</th>
+    <th>Room No.</th>
+    <th>Time OUT</th>
+    <th>Where</th>
+    <th>Time IN</th>
+  </tr>
+  
+ <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+  <div class="modal-header">
+      <span class="close">&times;</span>
+  </div>
+    <div class="modal-body">
+
+  <div id="container">
+
+
+  <h1 class="h1"  align="center">LOGIN</h1>
+  
+ <form action="" class="form"> 
+        <div class="form-group"> 
+            <label id="lg" for="id1">User Name:</label> 
+            <br>
+            <input class="form-control2" type="text" id="id1" placeholder="Enter your User Name"> 
+        </div> 
+        <div class="form-group"> 
+            <label id="lg" for="id2" >Password:</label> 
+            <br>
+            <input class="form-control2" type="password" id="id2" placeholder="Enter your password"> 
+        </div> 
+        
+            <button type="button" class="btn-login" onclick="window.location.href = 'project.html';">Login</button> 
+       
+    </form> 
+  
+  </div>
+     </div>
+  </div>
+
+</div>
+
+  
+</body>
+<footer>
+    <script src = "login_js.js"></script>
+ </footer>
+</html>
